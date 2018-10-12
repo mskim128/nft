@@ -1,0 +1,527 @@
+table bridge bridgetest {
+        chain prerouting_300 {
+                type filter hook prerouting priority -300; policy accept;
+                ip protocol icmp log prefix "*****Bridge**********Bridge*****PRE_300  FILTER     IP: " nftrace set 1
+        }
+        chain prerouting_200 {
+                type filter hook prerouting priority -200; policy accept;
+                ip protocol icmp log prefix "*****Bridge**********Bridge*****PRE_200  FILTER     IP: "
+        }
+        chain prerouting_150 {
+                type filter hook prerouting priority -150; policy accept;
+                ip protocol icmp log prefix "*****Bridge**********Bridge*****PRE_150  FILTER     IP: "
+        }
+        chain prerouting_100 {
+                type filter hook prerouting priority -100; policy accept;
+                ip protocol icmp log prefix "*****Bridge**********Bridge*****PRE_100  FILTER     IP: "
+        }
+        chain prerouting {
+                type filter hook prerouting priority 0; policy accept;
+                ip protocol icmp log prefix "*****Bridge**********Bridge*****PRE_0  FILTER     IP: "
+        }
+        chain prerouting100 {
+                type filter hook prerouting priority 100; policy accept;
+                ip protocol icmp log prefix "*****Bridge**********Bridge*****PRE100  FILTER     IP: "
+        }
+        chain prerouting225 {
+                type filter hook prerouting priority 225; policy accept;
+                ip protocol icmp log prefix "*****Bridge**********Bridge*****PRE225  FILTER     IP: "
+        }
+        chain prerouting300 {
+                type filter hook prerouting priority 300; policy accept;
+                ip protocol icmp log prefix "*****Bridge**********Bridge*****PRE300  FILTER     IP: "
+        }
+
+#-------------------------------------------------------------------------------------
+        chain input_300 {
+                type filter hook input priority -300; policy accept;
+                ip protocol icmp log prefix "*****Bridge**********Bridge*****INPUT_300       FILTER     IP: "
+        }
+        chain input_200 {
+                type filter hook input priority -200; policy accept;
+                ip protocol icmp log prefix "*****Bridge**********Bridge*****INPUT_200       FILTER     IP: "
+        }
+        chain input_150 {
+                type filter hook input priority -150; policy accept;
+                ip protocol icmp log prefix "*****Bridge**********Bridge*****INPUT_150       FILTER     IP: "
+        }
+        chain input_100 {
+                type filter hook input priority -100; policy accept;
+                ip protocol icmp log prefix "*****Bridge**********Bridge*****INPUT_100       FILTER     IP: "
+        }
+        chain input {
+                type filter hook input priority 0; policy accept;
+                ip protocol icmp log prefix "*****Bridge*****INPUT_0       FILTER     IP: "
+        }
+        chain input100 {
+                type filter hook input priority 100; policy accept;
+                ip protocol icmp log prefix "*****Bridge*****INPUT100       FILTER     IP: "
+        }
+        chain input225 {
+                type filter hook input priority 225; policy accept;
+                ip protocol icmp log prefix "*****Bridge*****INPUT225       FILTER     IP: "
+        }
+        chain input300 {
+                type filter hook input priority 300; policy accept;
+                ip protocol icmp log prefix "*****Bridge*****INPUT300       FILTER     IP: "
+        }
+#-------------------------------------------------------------------------------------
+        chain forward_300 {
+                type filter hook forward priority -300; policy accept;
+                ip protocol icmp log prefix "*****Bridge*****FORWARD_300     FILTER     IP: "
+        }
+        chain forward_200 {
+                type filter hook forward priority -200; policy accept;
+                ip protocol icmp log prefix "*****Bridge*****FORWARD_200     FILTER     IP: "
+        }
+        chain forward_150 {
+                type filter hook forward priority -150; policy accept;
+                ip protocol icmp log prefix "*****Bridge*****FORWARD_150     FILTER     IP: "
+        }
+        chain forward_100 {
+                type filter hook forward priority -100; policy accept;
+                ip protocol icmp log prefix "*****Bridge*****FORWARD_100     FILTER     IP: "
+        }
+        chain forward {
+                type filter hook forward priority 0; policy accept;
+                ip protocol icmp log prefix "*****Bridge*****FORWARD_0     FILTER     IP: "
+        }
+        chain forward100 {
+                type filter hook forward priority 100; policy accept;
+                ip protocol icmp log prefix "*****Bridge*****FORWARD100     FILTER     IP: "
+        }
+        chain forward225 {
+                type filter hook forward priority 225; policy accept;
+                ip protocol icmp log prefix "*****Bridge*****FORWARD225     FILTER     IP: "
+        }
+        chain forward300 {
+                type filter hook forward priority 300; policy accept;
+                ip protocol icmp log prefix "*****Bridge*****FORWARD300     FILTER     IP: "
+        }
+
+#-------------------------------------------------------------------------------------
+        chain output_300 {
+                type filter hook output priority -300; policy accept;
+                ip protocol icmp log prefix "*****Bridge*****OUTPUT_300      FILTER     IP: "
+        }
+        chain output_200 {
+                type filter hook output priority -200; policy accept;
+                ip protocol icmp log prefix "*****Bridge*****OUTPUT_200      FILTER     IP: "
+        }
+        chain output_150 {
+                type filter hook output priority -150; policy accept;
+                ip protocol icmp log prefix "*****Bridge*****OUTPUT_150      FILTER     IP: "
+        }
+        chain output_100 {
+                type filter hook output priority -100; policy accept;
+                ip protocol icmp log prefix "*****Bridge*****OUTPUT_100      FILTER     IP: "
+        }
+        chain output {
+                type filter hook output priority 0; policy accept;
+                ip protocol icmp log prefix "*****Bridge*****OUTPUT_0      FILTER     IP: "
+        }
+        chain output100 {
+                type filter hook output priority 100; policy accept;
+                ip protocol icmp log prefix "*****Bridge*****OUTPUT100      FILTER     IP: "
+        }
+        chain output225 {
+                type filter hook output priority 225; policy accept;
+                ip protocol icmp log prefix "*****Bridge*****OUTPUT225      FILTER     IP: "
+        }
+        chain output300 {
+                type filter hook output priority 300; policy accept;
+                ip protocol icmp log prefix "*****Bridge*****OUTPUT300      FILTER     IP: "
+        }
+
+#-------------------------------------------------------------------------------------
+        chain postrouting_300 {
+                type filter hook postrouting priority -300; policy accept;
+                ip protocol icmp log prefix "*****Bridge*****POST_300 FILTER     IP: "
+        }
+        chain postrouting_200 {
+                type filter hook postrouting priority -200; policy accept;
+                ip protocol icmp log prefix "*****Bridge*****POST_200 FILTER     IP: "
+        }
+        chain postrouting_150 {
+                type filter hook postrouting priority -150; policy accept;
+                ip protocol icmp log prefix "*****Bridge*****POST_150 FILTER     IP: "
+        }
+        chain postrouting_100 {
+                type filter hook postrouting priority -100; policy accept;
+                ip protocol icmp log prefix "*****Bridge*****POST_100 FILTER     IP: "
+        }
+        chain postrouting {
+                type filter hook postrouting priority 0; policy accept;
+                ip protocol icmp log prefix "*****Bridge*****POST_0 FILTER     IP: "
+        }
+        chain postrouting100 {
+                type filter hook postrouting priority 100; policy accept;
+                ip protocol icmp log prefix "*****Bridge*****POST100 FILTER     IP: "
+        }
+        chain postrouting225 {
+                type filter hook postrouting priority 225; policy accept;
+                ip protocol icmp log prefix "*****Bridge*****POST225 FILTER     IP: "
+        }
+        chain postrouting300 {
+                type filter hook postrouting priority 300; policy accept;
+                ip protocol icmp log prefix "*****Bridge*****POST300 FILTER     IP: "
+        }
+
+#-------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------------
+}
+
+
+
+table ip iptest {
+        chain prerouting_300 {
+                type filter hook prerouting priority -300; policy accept;
+                ip protocol icmp log prefix "PRE_300  FILTER     IP: " nftrace set 2
+        }
+        chain prerouting_200 {
+                type filter hook prerouting priority -200; policy accept;
+                ip protocol icmp log prefix "PRE_200  FILTER     IP: "
+        }
+        chain prerouting_150 {
+                type filter hook prerouting priority -150; policy accept;
+                ip protocol icmp log prefix "PRE_150  FILTER     IP: "
+        }
+        chain prerouting_100 {
+                type filter hook prerouting priority -100; policy accept;
+                ip protocol icmp log prefix "PRE_100  FILTER     IP: "
+        }
+        chain prerouting {
+                type filter hook prerouting priority 0; policy accept;
+                ip protocol icmp log prefix "PRE_0  FILTER     IP: "
+        }
+        chain prerouting100 {
+                type filter hook prerouting priority 100; policy accept;
+                ip protocol icmp log prefix "PRE100  FILTER     IP: "
+        }
+        chain prerouting225 {
+                type filter hook prerouting priority 225; policy accept;
+                ip protocol icmp log prefix "PRE225  FILTER     IP: "
+        }
+        chain prerouting300 {
+                type filter hook prerouting priority 300; policy accept;
+                ip protocol icmp log prefix "PRE300  FILTER     IP: "
+        }
+
+#-------------------------------------------------------------------------------------
+        chain input_300 {
+                type filter hook input priority -300; policy accept;
+                ip protocol icmp log prefix "INPUT_300       FILTER     IP: "
+        }
+        chain input_200 {
+                type filter hook input priority -200; policy accept;
+                ip protocol icmp log prefix "INPUT_200       FILTER     IP: "
+        }
+        chain input_150 {
+                type filter hook input priority -150; policy accept;
+                ip protocol icmp log prefix "INPUT_150       FILTER     IP: "
+        }
+        chain input_100 {
+                type filter hook input priority -100; policy accept;
+                ip protocol icmp log prefix "INPUT_100       FILTER     IP: "
+        }
+        chain input {
+                type filter hook input priority 0; policy accept;
+                ip protocol icmp log prefix "INPUT_0       FILTER     IP: "
+        }
+        chain input100 {
+                type filter hook input priority 100; policy accept;
+                ip protocol icmp log prefix "INPUT100       FILTER     IP: "
+        }
+        chain input225 {
+                type filter hook input priority 225; policy accept;
+                ip protocol icmp log prefix "INPUT225       FILTER     IP: "
+        }
+        chain input300 {
+                type filter hook input priority 300; policy accept;
+                ip protocol icmp log prefix "INPUT300       FILTER     IP: "
+        }
+#-------------------------------------------------------------------------------------
+        chain forward_300 {
+                type filter hook forward priority -300; policy accept;
+                ip protocol icmp log prefix "FORWARD_300     FILTER     IP: "
+        }
+        chain forward_200 {
+                type filter hook forward priority -200; policy accept;
+                ip protocol icmp log prefix "FORWARD_200     FILTER     IP: "
+        }
+        chain forward_150 {
+                type filter hook forward priority -150; policy accept;
+                ip protocol icmp log prefix "FORWARD_150     FILTER     IP: "
+        }
+        chain forward_100 {
+                type filter hook forward priority -100; policy accept;
+                ip protocol icmp log prefix "FORWARD_100     FILTER     IP: "
+        }
+        chain forward {
+                type filter hook forward priority 0; policy accept;
+                ip protocol icmp log prefix "FORWARD_0     FILTER     IP: "
+        }
+        chain forward100 {
+                type filter hook forward priority 100; policy accept;
+                ip protocol icmp log prefix "FORWARD100     FILTER     IP: "
+        }
+        chain forward225 {
+                type filter hook forward priority 225; policy accept;
+                ip protocol icmp log prefix "FORWARD225     FILTER     IP: "
+        }
+        chain forward300 {
+                type filter hook forward priority 300; policy accept;
+                ip protocol icmp log prefix "FORWARD300     FILTER     IP: "
+        }
+
+#-------------------------------------------------------------------------------------
+        chain output_300 {
+                type filter hook output priority -300; policy accept;
+                ip protocol icmp log prefix "OUTPUT_300      FILTER     IP: "
+        }
+        chain output_200 {
+                type filter hook output priority -200; policy accept;
+                ip protocol icmp log prefix "OUTPUT_200      FILTER     IP: "
+        }
+        chain output_150 {
+                type filter hook output priority -150; policy accept;
+                ip protocol icmp log prefix "OUTPUT_150      FILTER     IP: "
+        }
+        chain output_100 {
+                type filter hook output priority -100; policy accept;
+                ip protocol icmp log prefix "OUTPUT_100      FILTER     IP: "
+        }
+        chain output {
+                type filter hook output priority 0; policy accept;
+                ip protocol icmp log prefix "OUTPUT_0      FILTER     IP: "
+        }
+        chain output100 {
+                type filter hook output priority 100; policy accept;
+                ip protocol icmp log prefix "OUTPUT100      FILTER     IP: "
+        }
+        chain output225 {
+                type filter hook output priority 225; policy accept;
+                ip protocol icmp log prefix "OUTPUT225      FILTER     IP: "
+        }
+        chain output300 {
+                type filter hook output priority 300; policy accept;
+                ip protocol icmp log prefix "OUTPUT300      FILTER     IP: "
+        }
+
+#-------------------------------------------------------------------------------------
+        chain postrouting_300 {
+                type filter hook postrouting priority -300; policy accept;
+                ip protocol icmp log prefix "POST_300 FILTER     IP: "
+        }
+        chain postrouting_200 {
+                type filter hook postrouting priority -200; policy accept;
+                ip protocol icmp log prefix "POST_200 FILTER     IP: "
+        }
+        chain postrouting_150 {
+                type filter hook postrouting priority -150; policy accept;
+                ip protocol icmp log prefix "POST_150 FILTER     IP: "
+        }
+        chain postrouting_100 {
+                type filter hook postrouting priority -100; policy accept;
+                ip protocol icmp log prefix "POST_100 FILTER     IP: "
+        }
+        chain postrouting {
+                type filter hook postrouting priority 0; policy accept;
+                ip protocol icmp log prefix "POST_0 FILTER     IP: "
+        }
+        chain postrouting100 {
+                type filter hook postrouting priority 100; policy accept;
+                ip protocol icmp log prefix "POST100 FILTER     IP: "
+        }
+        chain postrouting225 {
+                type filter hook postrouting priority 225; policy accept;
+                ip protocol icmp log prefix "POST225 FILTER     IP: "
+        }
+        chain postrouting300 {
+                type filter hook postrouting priority 300; policy accept;
+                ip protocol icmp log prefix "POST300 FILTER     IP: "
+        }
+
+#-------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------------
+
+# NAT
+        chain preroutingnat_300 {
+                type nat hook prerouting priority -300; policy accept;
+                ip protocol icmp log prefix "PRE_300     NAT     IP: "
+        }
+        chain preroutingnat_200 {
+                type nat hook prerouting priority -200; policy accept;
+                ip protocol icmp log prefix "PRE_200     NAT     IP: "
+        }
+        chain preroutingnat_150 {
+                type nat hook prerouting priority -150; policy accept;
+                ip protocol icmp log prefix "PRE_150     NAT     IP: "
+        }
+        chain preroutingnat_100 {
+                type nat hook prerouting priority 100; policy accept;
+                ip protocol icmp log prefix "PRE_100     NAT     IP: "
+        }
+        chain preroutingnat {
+                type nat hook prerouting priority 0; policy accept;
+                ip protocol icmp log prefix "PRE_0     NAT     IP: "
+        }
+        chain preroutingnat100 {
+                type nat hook prerouting priority 100; policy accept;
+                ip protocol icmp log prefix "PRE100     NAT     IP: "
+        }
+        chain preroutingnat225 {
+                type nat hook prerouting priority 225; policy accept;
+                ip protocol icmp log prefix "PRE225     NAT     IP: "
+        }
+        chain preroutingnat300 {
+                type nat hook prerouting priority 300; policy accept;
+                ip protocol icmp log prefix "PRE300     NAT     IP: "
+        }
+#-------------------------------------------------------------------------------------
+        chain inputnat_300 {
+                type nat hook input priority -300; policy accept;
+                ip protocol icmp log prefix "INPUT_300          NAT     IP: "
+        }
+        chain inputnat_200 {
+                type nat hook input priority -200; policy accept;
+                ip protocol icmp log prefix "INPUT_200          NAT     IP: "
+        }
+        chain inputnat_150 {
+                type nat hook input priority -150; policy accept;
+                ip protocol icmp log prefix "INPUT_150          NAT     IP: "
+        }
+        chain inputnat_100 {
+                type nat hook input priority -100; policy accept;
+                ip protocol icmp log prefix "INPUT_100          NAT     IP: "
+        }
+        chain inputnat {
+                type nat hook input priority 0; policy accept;
+                ip protocol icmp log prefix "INPUT_0          NAT     IP: "
+        }
+        chain inputnat100 {
+                type nat hook input priority 100; policy accept;
+                ip protocol icmp log prefix "INPUT100          NAT     IP: "
+        }
+        chain inputnat225 {
+                type nat hook input priority 225; policy accept;
+                ip protocol icmp log prefix "INPUT225          NAT     IP: "
+        }
+        chain inputnat300 {
+                type nat hook input priority 300; policy accept;
+                ip protocol icmp log prefix "INPUT300          NAT     IP: "
+        }
+#-------------------------------------------------------------------------------------
+#nat forward is not supported
+#
+#        chain forwardnat {
+#                type nat hook forward priority 0; policy accept;
+#                ip protocol icmp log prefix "FORWARD_0     NAT     IP: "
+#        }
+#        chain forwardnat_150 {
+#                type nat hook forward priority -150; policy accept;
+#                ip protocol icmp log prefix "FORWARD_150     NAT     IP: "
+#        }
+#
+#-------------------------------------------------------------------------------------
+        chain outputnat_300 {
+                type nat hook output priority -300; policy accept;
+                ip protocol icmp log prefix "OUTPUT_300         NAT     IP: "
+        }
+        chain outputnat_200 {
+                type nat hook output priority -200; policy accept;
+                ip protocol icmp log prefix "OUTPUT_200         NAT     IP: "
+        }
+        chain outputnat_150 {
+                type nat hook output priority -150; policy accept;
+                ip protocol icmp log prefix "OUTPUT_150         NAT     IP: "
+        }
+        chain outputnat_100 {
+                type nat hook output priority -100; policy accept;
+                ip protocol icmp log prefix "OUTPUT_100         NAT     IP: "
+        }
+        chain outputnat {
+                type nat hook output priority 0; policy accept;
+                ip protocol icmp log prefix "OUTPUT_0         NAT     IP: "
+        }
+        chain outputnat100 {
+                type nat hook output priority 100; policy accept;
+                ip protocol icmp log prefix "OUTPUT100         NAT     IP: "
+        }
+        chain outputnat225 {
+                type nat hook output priority 225; policy accept;
+                ip protocol icmp log prefix "OUTPUT225         NAT     IP: "
+        }
+        chain outputnat300 {
+                type nat hook output priority 300; policy accept;
+                ip protocol icmp log prefix "OUTPUT300         NAT     IP: "
+        }
+#-------------------------------------------------------------------------------------
+        chain postroutingnat_300 {
+                type nat hook postrouting priority -300; policy accept;
+                ip protocol icmp log prefix "POST_300    NAT     IP: "
+        }
+        chain postroutingnat_200 {
+                type nat hook postrouting priority -200; policy accept;
+                ip protocol icmp log prefix "POST_200    NAT     IP: "
+        }
+        chain postroutingnat_150 {
+                type nat hook postrouting priority -150; policy accept;
+                ip protocol icmp log prefix "POST_150    NAT     IP: "
+        }
+        chain postroutingnat_100 {
+                type nat hook postrouting priority -100; policy accept;
+                ip protocol icmp log prefix "POST_100    NAT     IP: "
+        }
+        chain postroutingnat {
+                type nat hook postrouting priority 0; policy accept;
+                ip protocol icmp log prefix "POST_0    NAT     IP: "
+        }
+        chain postroutingnat100 {
+                type nat hook postrouting priority 100; policy accept;
+                ip protocol icmp log prefix "POST100    NAT     IP: "
+        }
+        chain postroutingnat225 {
+                type nat hook postrouting priority 225; policy accept;
+                ip protocol icmp log prefix "POST225    NAT     IP: "
+        }
+        chain postroutingnat300 {
+                type nat hook postrouting priority 300; policy accept;
+                ip protocol icmp log prefix "POST300    NAT     IP: "
+        }
+#-------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------------
+# ROUTE
+#        chain routeoutput_300 {
+#                type route hook output priority -300; policy accept;
+#                ip protocol icmp log prefix "OUTPUT_300       ROUTE     IP: "
+#        }
+#        chain routeoutput_200 {
+#                type route hook output priority -200; policy accept;
+#                ip protocol icmp log prefix "OUTPUT_200       ROUTE     IP: "
+#        }
+#        chain routeoutput_150 {
+#                type route hook output priority -150; policy accept;
+#                ip protocol icmp log prefix "OUTPUT_150       ROUTE     IP: "
+#        }
+#        chain routeoutput_100 {
+#                type route hook output priority -100; policy accept;
+#                ip protocol icmp log prefix "OUTPUT_100       ROUTE     IP: "
+#        }
+#        chain routeoutput {
+#                type route hook output priority 0; policy accept;
+#                ip protocol icmp log prefix "OUTPUT_0       ROUTE     IP: "
+#        }
+#        chain routeoutput100 {
+#                type route hook output priority 100; policy accept;
+#                ip protocol icmp log prefix "OUTPUT100       ROUTE     IP: "
+#        }
+#        chain routeoutput225 {
+#                type route hook output priority 225; policy accept;
+#                ip protocol icmp log prefix "OUTPUT225       ROUTE     IP: "
+#        }
+#        chain routeoutput300 {
+#                type route hook output priority 300; policy accept;
+#                ip protocol icmp log prefix "OUTPUT300       ROUTE     IP: "
+#        }
+}

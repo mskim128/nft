@@ -1,0 +1,127 @@
+table ip tcc {
+#-------------------------------------------------------------------------------------
+#
+# filter type
+#
+#       set notrack daddr location (berfore connection tracking)
+#	G/W and LB for stateless NAT
+        chain prerouting_300 {
+                type filter hook prerouting priority -300; policy accept;
+                ip protocol icmp log prefix "PRE_300  FILTER    "
+		jump filter_prerouting_gw
+		jump filter_prerouting_lb
+        }
+
+        chain filter_prerouting_gw {
+                ip protocol icmp log prefix "PRE_300_GW  FILTER    "
+        }
+        chain filter_prerouting_lb {
+                ip protocol icmp log prefix "PRE_300_LB  FILTER    "
+        }
+
+#-------------------------------------------------------------------------------------
+#
+        chain input {
+                type filter hook input priority 0; policy accept;
+                ip protocol icmp log prefix "INPUT_0       FILTER    "
+        }
+#-------------------------------------------------------------------------------------
+#
+#	set firewall
+        chain forward {
+                type filter hook forward priority 0; policy drop;
+                ip protocol icmp log prefix "FORWARD_0     FILTER    "
+		iif eno1 goto forward_untrust_to_trust
+		iif enx00e04c360007 goto forward_trust_to_untrust
+        }
+        chain forward_trust_to_untrust {
+                ip protocol icmp log prefix "FOR_0_TR     FILTER    "
+		ip protocol icmp accept
+        }
+        chain forward_untrust_to_trust {
+                ip protocol icmp log prefix "FOR_0_UN     FILTER    "
+		ip protocol icmp accept
+        }
+
+#	set IPS/IDS
+        chain forward10 {
+                type filter hook forward priority 10; policy accept;
+                ip protocol icmp log prefix "FOR10_IPS     FILTER    "
+		iif eno1 queue num 0 
+        }
+
+
+#-------------------------------------------------------------------------------------
+#
+        chain output {
+                type filter hook output priority 0; policy accept;
+                ip protocol icmp log prefix "OUTPUT_0      FILTER    "
+        }
+
+#-------------------------------------------------------------------------------------
+#
+#       set notrack saddr location (berfore connection tracking)
+#	G/W and LB for stateless NAT
+        chain postrouting_300 {
+                type filter hook postrouting priority -300; policy accept;
+                ip protocol icmp log prefix "POST_300 FILTER    "
+		jump filter_postrouting_gw
+		jump filter_postrouting_lb
+        }
+
+        chain filter_postrouting_gw {
+                ip protocol icmp log prefix "POST_300_GW FILTER    "
+        }
+        chain filter_postrouting_lb {
+                ip protocol icmp log prefix "POST_300_LB FILTER    "
+        }
+
+#	last filter, if this chain doesn't exist, filter_postrouting_lb don't show at syslog
+        chain postrouting0 {
+                type filter hook postrouting priority 0; policy accept;
+                ip protocol icmp log prefix "POST0 FILTER    "
+	}
+
+#-------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------------
+# NAT type
+#
+#	set dnat
+        chain preroutingnat_200 {
+                type nat hook prerouting priority -200; policy accept;
+                ip protocol icmp log prefix "PRE_200     NAT    "
+		jump nat_prerouting_gw
+		jump nat_prerouting_lb
+        }
+
+        chain nat_prerouting_gw {
+                ip protocol icmp log prefix "PRE_200_GW   NAT    "
+		ip daddr 192.168.201.53 dnat 10.0.0.10
+        }
+        chain nat_prerouting_lb {
+                ip protocol icmp log prefix "PRE_200_LB   NAT    "
+        }
+#-------------------------------------------------------------------------------------
+#
+#	set snat
+        chain postroutingnat_200 {
+                type nat hook postrouting priority -200; policy accept;
+                ip protocol icmp log prefix "POST_200    NAT    "
+		jump nat_postrouting_gw
+		jump nat_postrouting_lb
+        }
+
+        chain nat_postrouting_gw {
+                ip protocol icmp log prefix "POST_200_GW   NAT    "
+		ip saddr 10.0.0.10 snat 192.168.201.53
+        }
+        chain nat_postrouting_lb {
+                ip protocol icmp log prefix "POST_200_LB   NAT    "
+        }
+#-------------------------------------------------------------------------------------
+# ROUTE
+        chain routeoutput {
+                type route hook output priority 0; policy accept;
+                ip protocol icmp log prefix "OUTPUT_0       ROUTE    "
+        }
+}

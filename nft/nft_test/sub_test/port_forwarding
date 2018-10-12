@@ -1,0 +1,11 @@
+table ip nat {
+	chain prerouting {
+		type filter hook prerouting priority -300;
+		#ip daddr 192.168.201.53 tcp dport {30,40} ip daddr set 10.0.0.10 tcp dport set {5000, 6000} notrack counter log prefix "before conntrack"
+		#ip saddr 10.0.0.10 ip saddr set 192.168.201.53 notrack counter log
+	}
+	chain postrouting {
+		type filter hook postrouting priority -300;
+		ip protocol icmp counter log prefix "filter_postrouting"
+	}
+}
